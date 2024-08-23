@@ -13,7 +13,7 @@ class Loja(Base):
     bairro = Column(String(30), comment="Bairro do Endereco da Loja", nullable=False)
     cidade = Column(String(30), comment="Cidade do Endereco da Loja", nullable=False)
     uf = Column(String(2), comment="UF do Endereco da Loja", nullable=False)
-    cep = Column(String(8), comment="CEP do Endereco da Loja", nullable=False)
+    cep = Column(String(9), comment="CEP do Endereco da Loja", nullable=False)
     horario_seg_sab = Column(String(30), comment="Horario Funcionamento da Loja de Segunda a Sabado", nullable=False)
     horario_dom_feriado = Column(String(30), comment="Horario Funcionamento da Loja de Domingo e Feriados", nullable=False)
     telefone = Column(String(50), comment="Telefone da Loja", nullable=False)
