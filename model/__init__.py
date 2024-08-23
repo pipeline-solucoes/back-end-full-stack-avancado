@@ -5,6 +5,8 @@ from sqlalchemy import create_engine
 from model.base import Base
 from model.categoria_cardapio import CategoriaCardapio
 from model.item_cardapio import ItemCardapio 
+from model.fale_conosco import FaleConosco
+from model.loja import Loja  
 
 
 # url de acesso ao banco (essa é uma url de acesso ao sqlite local)
