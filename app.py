@@ -7,6 +7,7 @@ from sqlalchemy.exc import IntegrityError
 from model import Session
 from logger import logger
 from model.categoria_cardapio import CategoriaCardapio
+from model.fidelidade import Fidelidade
 from model.item_cardapio import ItemCardapio
 from model.fale_conosco import FaleConosco
 from model.loja import Loja
@@ -23,7 +24,6 @@ cardapio_tag = Tag(name="Cardapio", description="Visualizacao do cardapio")
 lojas_tag = Tag(name="Lojas", description="Visualizacao das Lojas")
 faleconosco_tag = Tag(name="Fale Conosco", description="Adicionar Fale Conosco")
 fidelidade_tag = Tag(name="Programa Fidelidade", description="Adicionar Fidelidade")
-
 
 @app.get('/', tags=[home_tag])
 def home():
@@ -106,6 +106,36 @@ def add_fale_conosco(form: FaleConoscoSchema):
 
     except Exception as e:       
         error_msg = "Não foi possível salvar novo item :/" + e
+        logger.warning(f"Erro ao adicionar item '{item.nome}', {error_msg}")
+        return {"mesage": error_msg}, 400
+
+@app.post('/fidelidade', tags=[fidelidade_tag],
+          responses={"200": FidelidadeAddSchema, "400": ErrorSchema})
+def add_fidelidade(form: FidelidadeSchema):
+    """
+    Adiciona um novo cliente Fidelidade à base de dados
+    Retorna uma representação do cliente Fidelidade.
+    """
+    item = Fidelidade(
+        nome=form.nome,       
+        email=form.email,
+        telefone=form.telefone)
+    
+    logger.debug(f"Adicionando Fidelidade: '{item.nome}'")
+    try:
+        session = Session()
+        session.add(item)
+        session.commit()
+        logger.debug(f"Adicionado Fidelidade: '{item.id}'")
+        return apresenta_novo_fidelidade(item), 200
+
+    except IntegrityError as e:
+        error_msg = "Cliente já cadastrado no Programa Fidelidade :/"
+        logger.warning(f"Cliente ja cadastrado '{item.nome}', {error_msg}")
+        return {"mesage": error_msg}, 409
+
+    except Exception as e:       
+        error_msg = "Não foi possível salvar novo cliente Fidelidade :/" + e
         logger.warning(f"Erro ao adicionar item '{item.nome}', {error_msg}")
         return {"mesage": error_msg}, 400
 
