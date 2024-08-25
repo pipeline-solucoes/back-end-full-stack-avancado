@@ -65,7 +65,25 @@ def get_lojas():
         print(lojas)
         return apresenta_lojas(lojas), 200
 
-@app.post('/fale_conosco', tags=[faleconosco_tag],
+@app.get('/fale-conosco', tags=[faleconosco_tag],
+         responses={"200": ListagemFaleConosco, "404": ErrorSchema})
+def get_faleconosco():
+    """
+    Pesquisa todas as Mensagens do Fale Conosco não lidas.
+    Retorna uma representação da listagem das mensagens do Fale Conosco.
+    """
+    logger.debug(f"Coletando Fale Conosco ")
+    session = Session()
+    lista = session.query(FaleConosco).order_by(FaleConosco.nome.asc()).all()
+
+    if not lista:
+        return {"mensagens": []}, 200
+    else:
+        logger.debug(f"%d Fale Conosco encontrados" % len(lista))
+        print(lista)
+        return apresenta_faleconosco(lista), 200
+
+@app.post('/fale-conosco', tags=[faleconosco_tag],
           responses={"200": FaleConoscoAddSchema, "400": ErrorSchema})
 def add_fale_conosco(form: FaleConoscoSchema):
     """
@@ -95,7 +113,10 @@ def add_fale_conosco(form: FaleConoscoSchema):
 if __name__ == "__main__":
     app.run(debug=True)
 
-
+# except IntegrityError as e:
+#         error_msg = "Item do Cardápio de mesmo nome já salvo na base :/"
+#         logger.warning(f"Erro ao adicionar item '{item.nome}', {error_msg}")
+#         return {"mesage": error_msg}, 409
 
 # categoria_cardapio_tag = Tag(name="CategoriaCardapio", description="Visualização de categorias do cardápio")
 # itens_cardapio_tag = Tag(name="ItensCardapio", description="Adição e remoção dos itens do cardápio à base")

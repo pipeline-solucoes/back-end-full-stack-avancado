@@ -1,6 +1,6 @@
 # Minha API em REST
 
-Este pequeno projeto faz parte do material diático da Disciplina **Desenvolvimento Full Stack Avançado** 
+Este pequeno projeto faz parte do material diático da Disciplina **Desenvolvimento Back End Avançado** 
 
 O objetivo aqui é apresetar uma API emplementada seguindo o estilo REST.
 
