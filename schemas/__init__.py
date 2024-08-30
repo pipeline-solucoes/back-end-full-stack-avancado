@@ -3,4 +3,5 @@ from schemas.item_cardapio import ItemCardapioSchema,  ItemCardapioDelSchema, It
 from schemas.loja import LojaSchema, LojaViewSchema, ListagemLoja, apresenta_lojas
 from schemas.fidelidade import FidelidadeSchema, FidelidadeViewSchema, FidelidadeAddSchema, apresenta_novo_fidelidade
 from schemas.fale_conosco import FaleConoscoSchema, FaleConoscoViewSchema, FaleConoscoAddSchema, ListagemFaleConosco, apresenta_faleconosco, apresenta_novo_fale_conosco
+from schemas.reserva import ReservaSchema, ReservaViewSchema, ReservaAddSchema, apresenta_nova_reserva
 from schemas.error import ErrorSchema

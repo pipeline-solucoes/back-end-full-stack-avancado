@@ -8,6 +8,7 @@ from model.item_cardapio import ItemCardapio
 from model.fale_conosco import FaleConosco
 from model.loja import Loja  
 from model.fidelidade import Fidelidade
+from model.reserva import Reserva
 
 # url de acesso ao banco (essa é uma url de acesso ao sqlite local)
 db_url = 'sqlite:///database/db.sqlite3'

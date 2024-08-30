@@ -11,6 +11,7 @@ from model.fidelidade import Fidelidade
 from model.item_cardapio import ItemCardapio
 from model.fale_conosco import FaleConosco
 from model.loja import Loja
+from model.reserva import Reserva
 from schemas import *
 from flask_cors import CORS
 
@@ -23,7 +24,8 @@ home_tag = Tag(name="Documentação", description="Seleção de documentação: 
 cardapio_tag = Tag(name="Cardapio", description="Visualizacao do cardapio")
 lojas_tag = Tag(name="Lojas", description="Visualizacao das Lojas")
 faleconosco_tag = Tag(name="Fale Conosco", description="Adicionar Fale Conosco")
-fidelidade_tag = Tag(name="Programa Fidelidade", description="Adicionar Fidelidade")
+fidelidade_tag = Tag(name="Programa Fidelidade", description="Adicionar Cliente no Programa Fidelidade")
+reserva_tag = Tag(name="Reservas", description="Adicionar Reserva")
 
 @app.get('/', tags=[home_tag])
 def home():
@@ -139,6 +141,32 @@ def add_fidelidade(form: FidelidadeSchema):
         logger.warning(f"Erro ao adicionar item '{item.nome}', {error_msg}")
         return {"mesage": error_msg}, 400
 
+@app.post('/reserva', tags=[reserva_tag],
+          responses={"200": ReservaAddSchema, "400": ErrorSchema})
+def add_reserva(form: ReservaSchema):
+    """
+    Adiciona uma nova Reserva à base de dados
+    Retorna uma representação da Reserva.
+    """
+    item = Reserva(
+        nome=form.nome,       
+        email=form.email,
+        telefone=form.telefone,
+        dataReserva=form.dataReserva,
+        qtdPessoas=form.qtdPessoas)
+    
+    logger.debug(f"Adicionando Reserva: '{item.nome}'")
+    try:
+        session = Session()
+        session.add(item)
+        session.commit()
+        logger.debug(f"Adicionado Reserva: '{item.id}'")
+        return apresenta_nova_reserva(item), 200
+
+    except Exception as e:       
+        error_msg = "Não foi possível salvar nova reserva :/" + e
+        logger.warning(f"Erro ao adicionar item '{item.nome}', {error_msg}")
+        return {"mesage": error_msg}, 400
 
 if __name__ == "__main__":
     app.run(debug=True)
