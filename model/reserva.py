@@ -8,7 +8,7 @@ class Reserva(Base):
     
     id = Column(Integer, primary_key=True, autoincrement=True, comment="Identificador da Reserva")
     nome = Column(String(100), comment="Nome do Cliente", nullable=False)
-    email = Column(String(100), unique=True, comment="Email do Cliente", nullable=False)
+    email = Column(String(100), comment="Email do Cliente", nullable=False)
     telefone = Column(String(50), comment="Telefone do Cliente", nullable=False)
     dataReserva = Column(DateTime, comment="DataHora da Reserva", nullable=False)  
     qtdPessoas = Column(Integer, comment="DataHora da Reserva", nullable=False)    

@@ -32,7 +32,7 @@ class ListagemFaleConosco(BaseModel):
     lojas: List[FaleConoscoSchema] 
 
 def apresenta_faleconosco(lista: List[FaleConosco]):
-    """ Retorna uma representação da listagem das lojas
+    """ Retorna uma representação da listagem do fale conosco
     """
     result = []
     for item in lista:

@@ -1,3 +1,4 @@
+from typing import List
 from pydantic import BaseModel
 from datetime import datetime
 
@@ -39,7 +40,6 @@ class ReservaAddSchema(BaseModel):
     dataReserva: datetime = datetime.now()
     qtdPessoas: int = 1             
 
-
 def apresenta_nova_reserva(item: Reserva):
     """ 
     Retorna uma representação da nova Reserva
@@ -52,3 +52,26 @@ def apresenta_nova_reserva(item: Reserva):
         "dataReserva": item.dataReserva,
         "qtdPessoas": item.qtdPessoas
     }
+
+class ListagemReserva(BaseModel):
+    """ 
+    Define a representacao das
+    Reservas
+    """
+    lojas: List[ReservaSchema] 
+
+def apresenta_reserva(lista: List[Reserva]):
+    """ Retorna uma representação da listagem das reservas
+    """
+    result = []
+    for item in lista:
+        result.append({
+            "id": item.id,
+            "nome": item.nome,
+            "email": item.email, 
+            "telefone": item.telefone, 
+            "datareserva": item.dataReserva,
+            "qtdpessoas": item.qtdPessoas 
+        })        
+
+    return {"mensagens": result}
