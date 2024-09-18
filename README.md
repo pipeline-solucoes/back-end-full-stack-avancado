@@ -1,11 +1,12 @@
 # Minha API em REST
 
-Este projeto pertence Disciplina **Desenvolvimento Back End Avançado** do curso de Pós-Graduação em Desenvolvimento Full Stack da PUC-Rio   
+Este é um projeto que faz parte do MVP especificado na **Disciplina Back End Avançado** do curso de **Pós-Graduação em Desenvolvimento Full Stack da PUC-Rio**. 
 
-![alt text](image.png)
+O objetivo deste MVP é desenvolver um sistema composto por três componentes que se comunicam, seguindo o padrão REST. 
 
-O objetivo aqui é implementar uma API REST em python utilizando flask. Essa api é responsavel por carregar e por persistir os dados do site de um restaurante. 
-Ele corresponde ao componente C da arquitetura acima.
+![alt text](arquitetura-projeto.png)
+
+Aqui foi implementado o componente C da arquitetura acima que corresponde a uma API REST em python utilizando flask. Essa api é responsavel por carregar e por persistir os dados do site (Componente A). 
 
 As principais tecnologias que serão utilizadas aqui é o:
  - [Flask](https://flask.palletsprojects.com/en/2.3.x/)
