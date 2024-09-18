@@ -5,7 +5,7 @@ Este projeto pertence Disciplina **Desenvolvimento Back End Avançado** do curso
 ![alt text](image.png)
 
 O objetivo aqui é implementar uma API REST em python utilizando flask. Essa api é responsavel por carregar e por persistir os dados do site de um restaurante. 
-Ele corresponde ao componente B da arquitetura acima.
+Ele corresponde ao componente C da arquitetura acima.
 
 As principais tecnologias que serão utilizadas aqui é o:
  - [Flask](https://flask.palletsprojects.com/en/2.3.x/)
