@@ -1,8 +1,11 @@
 # Minha API em REST
 
-Este pequeno projeto faz parte do material diático da Disciplina **Desenvolvimento Back End Avançado** 
+Este projeto pertence Disciplina **Desenvolvimento Back End Avançado** do curso de Pós-Graduação em Desenvolvimento Full Stack da PUC-Rio   
 
-O objetivo aqui é apresetar uma API emplementada seguindo o estilo REST.
+![alt text](image.png)
+
+O objetivo aqui é implementar uma API REST em python utilizando flask. Essa api é responsavel por carregar e por persistir os dados do site de um restaurante. 
+Ele corresponde ao componente B da arquitetura acima.
 
 As principais tecnologias que serão utilizadas aqui é o:
  - [Flask](https://flask.palletsprojects.com/en/2.3.x/)
