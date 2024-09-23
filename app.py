@@ -168,24 +168,6 @@ def add_reserva(form: ReservaSchema):
         logger.warning(f"Erro ao adicionar item '{item.nome}', {error_msg}")
         return {"mesage": error_msg}, 400
 
-@app.get('/reserva', tags=[reserva_tag],
-         responses={"200": ListagemReserva, "404": ErrorSchema})
-def get_reservas():
-    """
-    Pesquisa todas as Reservas cadastradas.
-    Retorna uma representação da listagem das reservas.
-    """
-    logger.debug(f"Coletando Reservas ")
-    session = Session()
-    lista = session.query(Reserva).order_by(Reserva.dataReserva.desc()).all()
-
-    if not lista:
-        return {"mensagens": []}, 200
-    else:
-        logger.debug(f"%d Reservas encontradas" % len(lista))
-        print(lista)
-        return apresenta_reserva(lista), 200
-
 
 if __name__ == "__main__":
     app.run(debug=True)
