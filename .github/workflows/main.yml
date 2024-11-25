@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Escolha o número da revisão'
+        required: true
 
 jobs:
   deploy:
