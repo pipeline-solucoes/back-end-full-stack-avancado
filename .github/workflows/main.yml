@@ -56,6 +56,9 @@ jobs:
     - name: Buildar projeto
       run: |
         echo "Não é necessário build para Flask"
-
-    - name: Deploy to Vercel
-      run: npx vercel --token ${{ secrets.VERCEL_TOKEN }} --prod --confirm
+        
+    - name: Deploy to Render
+      uses: render/github-actions/render@v1 
+      with: 
+        api_key: "rnd_fVO0O2yMDZz57tw38XQVWK39aX9D"        
+        branch: main
