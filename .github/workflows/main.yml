@@ -1,4 +1,4 @@
-name: Main - Deploy e Build no Vercel
+name: Main - Deploy e Build no Render
 
 on:
   push:
@@ -60,5 +60,5 @@ jobs:
     - name: Deploy to Render
       uses: render/github-actions/render@v1 
       with: 
-        api_key: "rnd_fVO0O2yMDZz57tw38XQVWK39aX9D"        
+        api_key: rnd_fVO0O2yMDZz57tw38XQVWK39aX9D
         branch: main
