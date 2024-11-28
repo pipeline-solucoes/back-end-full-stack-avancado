@@ -58,11 +58,11 @@ jobs:
         echo "Não é necessário build para Flask"
         
     - name: Render Deploy
-        env:
-          RENDER_API_KEY: rnd_fVO0O2yMDZz57tw38XQVWK39aX9D
-          RENDER_SERVICE_ID: ct3mi568ii6s73d7p0pg
-        run: |
-          curl -X POST \
-            -H "Authorization: Bearer rnd_fVO0O2yMDZz57tw38XQVWK39aX9D" \
-            -d '{"branch": "main"}' \
-            https://api.render.com/deploy/srv-ct3mi568ii6s73d7p0pg?key=qbPKEFjenw0
+      env:
+        RENDER_API_KEY: rnd_fVO0O2yMDZz57tw38XQVWK39aX9D
+        RENDER_SERVICE_ID: ct3mi568ii6s73d7p0pg
+      run: |
+        curl -X POST \
+          -H "Authorization: Bearer rnd_fVO0O2yMDZz57tw38XQVWK39aX9D" \
+          -d '{"branch": "main"}' \
+          https://api.render.com/deploy/srv-ct3mi568ii6s73d7p0pg?key=qbPKEFjenw0
